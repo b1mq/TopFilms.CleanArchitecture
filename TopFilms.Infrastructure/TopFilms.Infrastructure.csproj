@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TopFilms.Application\TopFilms.Application.csproj" />
+    <ProjectReference Include="..\TopFilms.Domain\TopFilms.Domain.csproj" />
   </ItemGroup>
 
 </Project>
