@@ -9,10 +9,10 @@ namespace TopFilms.Application.Interfaces
 {
     public interface IFilmRepository
     {
-        public Task<IEnumerable<Film>> GetAllFimsAsync();
-        public Task<Film> GetFilmById(int filmId);
-        public Task SaveNewFilm(Film film);
-        public Task DeleteFilm(int filmId);
-        public Task UpdateFilm(Film film);
+        public Task<IEnumerable<Film>> GetAllFilmsAsync();
+        public Task<Film> GetFilmByIdAsync(int filmId);
+        public Task SaveNewFilmAsync(Film film);
+        public Task DeleteFilmAsync(int filmId);
+        public Task UpdateFilmAsync(Film film);
     }
 }
