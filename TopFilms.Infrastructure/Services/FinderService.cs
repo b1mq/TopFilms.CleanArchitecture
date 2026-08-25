@@ -19,10 +19,32 @@ namespace TopFilms.Infrastructure.Services
             _httpClient = httpClient;
             _ApiKey = configuration["OmdbApi:ApiKey"];
         }
-        public Task<Film> GetNewFilmAsync(string title)
+        public async Task<Film> GetNewFilmAsync(string title)
         {
-            var requesturl = $"?apikey={_ApiKey}&t={Uri.EscapeDataString(title)}";
-            var response = _httpClient.GetFromJsonAsync<Film>(requesturl);
+            var requestUri = $"?apikey={_ApiKey}&t={Uri.EscapeDataString(title)}";
+            var movieDto = await _httpClient.GetFromJsonAsync<OmdbMovieDTO>(requestUri);
+            if (movieDto == null || string.IsNullOrEmpty(title))
+            {
+                return new Film { Title = "Not found" };
+            }
+            var film = new Film
+            {
+                Title = movieDto.Title,
+                Description = movieDto.Plot,
+                Director = movieDto.Director,
+                Language = movieDto.Language,
+                Country = movieDto.Country,
+                Genre = movieDto.Genre,
+                Poster_Url = movieDto.Poster
+            };
+            if(int.TryParse(movieDto.Year, out int parsedYear))
+            {
+                film.Release_Year = parsedYear;
+            }
+            if(decimal.TryParse(movieDto.ImdbRating,out  decimal parsedRating))) {
+                film.Rating = parsedRating;
+            }
+            return film;
         }
 
     }
