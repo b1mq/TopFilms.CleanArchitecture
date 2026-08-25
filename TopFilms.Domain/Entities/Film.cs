@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TopFilms.Domain
+namespace TopFilms.Domain.Entities
 {
     public class Film
     {
