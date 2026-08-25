@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TopFilms.Domain\TopFilms.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
