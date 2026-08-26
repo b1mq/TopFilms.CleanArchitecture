@@ -16,7 +16,7 @@ namespace TopFilms.CleanArchitectureProject
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<FilmContext>(options =>
                 options.UseSqlServer(connectionString));
-            builder.Services.AddScoped<IFinderService, FinderService>();
+            builder.Services.AddScoped<IFilmRepository, FilmRepositorie>();
             builder.Services.AddHttpClient<IFinderService, FinderService>(client =>
             {
                 
@@ -26,6 +26,7 @@ namespace TopFilms.CleanArchitectureProject
                     client.BaseAddress = new Uri(baseUrl);
                 }
             });
+            builder.Services.AddScoped<IFilmManager,FilmManagerService>();
             var app = builder.Build();
             app.UseStaticFiles();
             app.UseRouting();

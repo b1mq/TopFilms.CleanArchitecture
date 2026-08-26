@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using TopFilms.Domain.Entities;
 namespace TopFilms.Application.Interfaces
 {
-    internal interface IFlimManager
+    public interface IFilmManager
     {
         public Task<Film?> ImportFilmFromApiAsync(string title);
     }
