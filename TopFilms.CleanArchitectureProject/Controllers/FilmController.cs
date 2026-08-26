@@ -22,7 +22,8 @@ namespace TopFilms.WebUI.Controllers
         }
         public async Task<IActionResult> DeleteMovie(int id)
         {
-            
+           await _filmManager.DeleteMovie(id);
+            return RedirectToAction("Index");
         }
     }
 }
