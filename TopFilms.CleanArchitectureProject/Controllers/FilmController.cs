@@ -20,5 +20,9 @@ namespace TopFilms.WebUI.Controllers
             var film = await _filmManager.ImportFilmFromApiAsync(title);
             return View(film);
         }
+        public async Task<IActionResult> DeleteMovie(int id)
+        {
+            
+        }
     }
 }

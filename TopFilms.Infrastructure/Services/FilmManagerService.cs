@@ -31,5 +31,9 @@ namespace TopFilms.Infrastructure.Services
             var films = await _filmRepository.GetAllFilmsAsync();
             return films;
         }
+        public async Task DeleteMovie(int id)
+        {
+            await _filmRepository.DeleteFilmAsync(id);
+        }
     }
 }
