@@ -20,6 +20,8 @@ namespace TopFilms.Infrastructure.Persistence
             modelBuilder.Entity<Film>(entity =>
             {
                 entity.HasKey(e => e.Film_id);
+                entity.Property(e => e.Rating)
+                .HasColumnType(("decimal(3,1)"));
             });
         }
     }

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TopFilms.Infrastructure.Persistence;
 
@@ -10,9 +11,11 @@ using TopFilms.Infrastructure.Persistence;
 namespace TopFilms.Infrastructure.Migrations
 {
     [DbContext(typeof(FilmContext))]
-    partial class FilmContextModelSnapshot : ModelSnapshot
+    [Migration("20260826223513_RatingPrecision")]
+    partial class RatingPrecision
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
