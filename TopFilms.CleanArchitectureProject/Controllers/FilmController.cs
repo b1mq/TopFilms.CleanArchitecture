@@ -3,10 +3,10 @@ using TopFilms.Application.Interfaces;
 
 namespace TopFilms.WebUI.Controllers
 {
-    public class HomeController : Controller
+    public class FilmController : Controller
     {
         private readonly IFilmManager _filmManager;
-        public HomeController(IFilmManager filmManager)
+        public FilmController(IFilmManager filmManager)
         {
             _filmManager = filmManager;
         }
