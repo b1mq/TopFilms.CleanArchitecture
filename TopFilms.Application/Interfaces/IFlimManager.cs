@@ -9,5 +9,6 @@ namespace TopFilms.Application.Interfaces
     public interface IFilmManager
     {
         public Task<Film?> ImportFilmFromApiAsync(string title);
+        public Task<IEnumerable<Film>> GetAllFilmsFromRepoAsync();
     }
 }

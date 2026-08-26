@@ -16,7 +16,7 @@ namespace TopFilms.Infrastructure.Services
             _finderService = finderService;
             _filmRepository = filmRepository;
         }
-        public async Task<Film?> ImportFilmFromApi(string title)
+        public async Task<Film?> ImportFilmFromApiAsync(string title)
         {
             var film = await _finderService.GetNewFilmAsync(title);
             if (film != null  &&  film.Title != "Not found")
@@ -25,6 +25,11 @@ namespace TopFilms.Infrastructure.Services
                 return film;
             }
             return null;
+        }
+        public async Task<IEnumerable<Film>> GetAllFilmsFromRepoAsync()
+        {
+            var films = await _filmRepository.GetAllFilmsAsync();
+            return films;
         }
     }
 }

@@ -10,7 +10,7 @@ namespace TopFilms.Infrastructure.Services
     public class OmdbMovieDTO
     {
         [JsonPropertyName("Title")]
-        public string Title { get; set; } 
+        public string Title { get; set; }  = string.Empty;
 
         [JsonPropertyName("Plot")]
         public string? Plot { get; set; } 

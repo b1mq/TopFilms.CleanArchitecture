@@ -1,0 +1,72 @@
+﻿@model TopFilms.Domain.Entities.Film
+
+@{
+    ViewData["Title"] = Model?.Title ?? "Movie Details";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+<div class="container py-5" data-bs-theme="dark">
+    <a asp-controller="Film" asp-action="Index" class="btn btn-outline-secondary mb-4">
+        <i class="bi bi-arrow-left me-1"></i> Back to list
+    </a>
+
+    @if (Model != null)
+    {
+        <div class="card bg-dark text-white border-secondary shadow-lg">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    @if (!string.IsNullOrEmpty(Model.Poster_Url) && Model.Poster_Url != "N/A")
+                    {
+                        <img src="@Model.Poster_Url" class="img-fluid rounded-start h-100" alt="@Model.Title" style="object-fit: cover; min-height: 400px;">
+                    }
+                    else
+                    {
+                        <div class="bg-secondary bg-opacity-25 h-100 d-flex align-items-center justify-content-center" style="min-height: 400px;">
+                            <i class="bi bi-film display-1 text-secondary"></i>
+                        </div>
+                    }
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body p-4 d-flex flex-column h-100">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <div>
+                                <h1 class="card-title fw-bold mb-1">@Model.Title</h1>
+                                <p class="text-secondary mb-0">@Model.Genre</p>
+                            </div>
+                            <span class="badge bg-warning text-dark fs-5">
+                                <i class="bi bi-star-fill"></i> @(Model.Rating?.ToString("0.0") ?? "N/A")
+                            </span>
+                        </div>
+
+                        <hr class="border-secondary mb-3">
+
+                        <p class="card-text lead text-light mb-4">@Model.Description</p>
+
+                        <div class="row g-3 mb-4 text-secondary small">
+                            <div class="col-6 col-sm-4">
+                                <strong>Year:</strong> <br><span class="text-white">@(Model.Release_Year?.ToString() ?? "N/A")</span>
+                            </div>
+                            <div class="col-6 col-sm-4">
+                                <strong>Director:</strong> <br><span class="text-white">@(Model.Director ?? "N/A")</span>
+                            </div>
+                            <div class="col-6 col-sm-4">
+                                <strong>Country:</strong> <br><span class="text-white">@(Model.Country ?? "N/A")</span>
+                            </div>
+                            <div class="col-6 col-sm-4">
+                                <strong>Language:</strong> <br><span class="text-white">@(Model.Language ?? "N/A")</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-auto pt-3 border-top border-secondary d-flex gap-2">
+                            <span class="badge bg-success bg-opacity-25 text-success border border-success px-3 py-2 d-flex align-items-center gap-1">
+                                <i class="bi bi-check-circle-fill"></i> Saved to Database
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -41,7 +41,7 @@ namespace TopFilms.Infrastructure.Services
             {
                 film.Release_Year = parsedYear;
             }
-            if(decimal.TryParse(movieDto.ImdbRating,out  decimal parsedRating))) {
+            if(decimal.TryParse(movieDto.ImdbRating,out  decimal parsedRating)) {
                 film.Rating = parsedRating;
             }
             return film;

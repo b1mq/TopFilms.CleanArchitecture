@@ -10,9 +10,10 @@ namespace TopFilms.WebUI.Controllers
         {
             _filmManager = filmManager;
         }
-        public async Task<IActionResult> Index()
+        public async Task< IActionResult> Index()
         {
-            return View();
+            var films = await _filmManager.GetAllFilmsFromRepoAsync();
+            return View(films);
         }
         public async Task<IActionResult> GetNewFilm(string title)
         {

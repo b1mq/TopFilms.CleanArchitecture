@@ -14,5 +14,13 @@ namespace TopFilms.Infrastructure.Persistence
         {
            
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Film>(entity =>
+            {
+                entity.HasKey(e => e.Film_id);
+            });
+        }
     }
 }
