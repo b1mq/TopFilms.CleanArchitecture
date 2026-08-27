@@ -51,6 +51,10 @@ namespace TopFilms.Infrastructure.Repositories
              _context.films.Update(film);
             await _context.SaveChangesAsync();
         }
-
+        public async Task<Film?> GetFilmByTitle(string title)
+        {
+            var film = await _context.films.FirstOrDefaultAsync(f => f.Title == title);
+            return film;
+        }
     }
 }

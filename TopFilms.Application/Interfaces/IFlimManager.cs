@@ -11,6 +11,6 @@ namespace TopFilms.Application.Interfaces
         public Task<Film?> ImportFilmFromApiAsync(string title);
         public Task<IEnumerable<Film>> GetAllFilmsFromRepoAsync();
         public Task DeleteMovie(int id);
-        public Task<Film?> GetFilmByTitle(string title);
+     
     }
 }

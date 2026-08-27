@@ -19,13 +19,22 @@ namespace TopFilms.Infrastructure.Services
         public async Task<Film?> ImportFilmFromApiAsync(string title)
         {
             // доделать логику проверки запроса в бд есть ли уже такой фильм добавить в репо метод получение по названию...
+
             var film = await _finderService.GetNewFilmAsync(title);
-            if (film != null  &&  film.Title != "Not found")
+            if (film == null  ||  film.Title == "Not found")
             {
-               await _filmRepository.SaveNewFilmAsync(film);
-               return film;
+                return null;
             }
-            return null;
+            var existFilmInDb = await _filmRepository.GetFilmByTitle(film.Title);
+            if(existFilmInDb == null)
+            {
+                await _filmRepository.SaveNewFilmAsync(film);
+                return film;
+
+            }
+            return existFilmInDb;
+            
+            
         }
         public async Task<IEnumerable<Film>> GetAllFilmsFromRepoAsync()
         {

@@ -14,5 +14,6 @@ namespace TopFilms.Application.Interfaces
         public Task SaveNewFilmAsync(Film film);
         public Task DeleteFilmAsync(int filmId);
         public Task UpdateFilmAsync(Film film);
+        public Task<Film?> GetFilmByTitle (string title);
     }
 }
