@@ -14,8 +14,19 @@ namespace TopFilms.CleanArchitectureProject
             var builder = WebApplication.CreateBuilder(args);
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
             builder.Services.AddControllersWithViews();
+
             builder.Services.AddDbContext<FilmContext>(options =>
-                options.UseSqlServer(connectionString));
+            {
+                // ≈сли строка содержит "Data Source=" или ".db", используем SQLite, иначе SQL Server
+                if (!string.IsNullOrEmpty(connectionString) && (connectionString.Contains("Data Source=", StringComparison.OrdinalIgnoreCase) || connectionString.EndsWith(".db", StringComparison.OrdinalIgnoreCase)))
+                {
+                    options.UseSqlite(connectionString);
+                }
+                else
+                {
+                    options.UseSqlServer(connectionString);
+                }
+            });
             builder.Services.AddScoped<IFilmRepository, FilmRepositorie>();
             builder.Services.AddHttpClient<IFinderService, FinderService>(client =>
             {
